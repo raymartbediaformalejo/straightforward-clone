@@ -1,11 +1,7 @@
 import HeroSection from "./HeroSection";
 
 const HomeContent = () => {
-  return (
-    <main>
-      <HeroSection />
-    </main>
-  );
+  return <HeroSection />;
 };
 
 export default HomeContent;
