@@ -1,7 +1,8 @@
-import { Menu, ShoppingCart } from "lucide-react";
+import { ShoppingCart } from "lucide-react";
 import Logo from "../svg/Logo";
 import { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
+import MobileToggle from "../mobile-toggle";
 
 const Header = () => {
   const headerRef = useRef<HTMLElement>(null);
@@ -46,15 +47,10 @@ const Header = () => {
         )}
       >
         <div className=" flex items-center justify-between px-[15px] py-[17.5px]">
-          <button>
-            <Menu
-              size="24px"
-              className={cn(
-                "transition-[color] duration-300 ease-in-out",
-                isScrolling || isPointerInHeader ? "text-primary" : "text-white"
-              )}
-            />
-          </button>
+          <MobileToggle
+            isScrolling={isScrolling}
+            isPointerInHeader={isPointerInHeader}
+          />
           <Logo
             className={cn(
               "transition-[fill] duration-300 ease-in-out",

@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 
-const HeroSection = () => {
+const HomeHeroSection = () => {
   const windowHeight = window.innerHeight;
   console.log(windowHeight);
   return (
@@ -28,4 +28,4 @@ const HeroSection = () => {
   );
 };
 
-export default HeroSection;
+export default HomeHeroSection;
