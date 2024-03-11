@@ -25,7 +25,7 @@ const MobileToggle = ({
           />
         </button>
       </SheetTrigger>
-      <SheetContent side="left" className="bg-primary border-none ">
+      <SheetContent side="left" className="p-0 border-none bg-primary">
         <NavigationSidebar />
       </SheetContent>
     </Sheet>

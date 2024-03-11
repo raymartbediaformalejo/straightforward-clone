@@ -36,7 +36,7 @@ const Header = () => {
   }, [isPointerInHeader]);
 
   return (
-    <div className="sticky top-0 left-0 w-full z-10 mb-[-61px]">
+    <div className="sticky top-0 left-0 w-full z-10 mb-[-65px]">
       <header
         ref={headerRef}
         onMouseEnter={handleMouseEnter}
