@@ -33,6 +33,7 @@ module.exports = {
         foreground: "hsl(var(--foreground))",
         gray: "hsl(var(--gray))",
         "gray-600": "hsl(var(--gray) / 0.251)",
+        "gray-650": "hsl(var(--gray) / 0.5 )",
         "gray-700": "hsl(var(--gray) / 0.502 )",
         "light-gray": "hsl(var(--light-gray))",
         primary: {
@@ -65,6 +66,7 @@ module.exports = {
         },
       },
       transitionDuration: {
+        350: "350ms",
         400: "400ms",
         450: "450ms",
       },

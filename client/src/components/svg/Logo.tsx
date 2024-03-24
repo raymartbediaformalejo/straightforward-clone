@@ -1,7 +1,6 @@
 import { SVGProps } from "react";
 
 const Logo = (props: SVGProps<SVGSVGElement>) => {
-  console.log(props.className);
   return (
     <svg
       width="140"
