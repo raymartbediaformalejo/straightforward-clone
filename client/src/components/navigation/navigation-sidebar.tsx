@@ -27,9 +27,7 @@ const NavigationSidebar = () => {
   const handleAccordionCollapsed = (value: string) => {
     const index = value.indexOf("-");
     setCollapsed(value.charAt(index + 1));
-    if (collapsed === "") {
-      setNestedCollapsed("");
-    }
+    setNestedCollapsed("");
   };
 
   console.log("collapsed: ", collapsed);
