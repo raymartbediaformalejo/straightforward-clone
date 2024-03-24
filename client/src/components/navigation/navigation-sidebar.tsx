@@ -27,8 +27,12 @@ const NavigationSidebar = () => {
   const handleAccordionCollapsed = (value: string) => {
     const index = value.indexOf("-");
     setCollapsed(value.charAt(index + 1));
+    if (collapsed === "") {
+      setNestedCollapsed("");
+    }
   };
 
+  console.log("collapsed: ", collapsed);
   console.log("nestedCollapsed: ", nestedCollapsed);
 
   const handleNestedAccordionCollapse = (value: string) => {
@@ -72,13 +76,13 @@ const NavigationSidebar = () => {
                       <div className="pb-[18px]">
                         <ul className="mt-4 mb-1 ml-2 pl-[25px] pr-5 border-l border-gray-600 flex flex-col gap-[18px]">
                           <li className="hover:text-white transition-[color] duration-400 ease-in-out cursor-pointer">
-                            New Arrival
+                            <a href="/">New Arrival</a>
                           </li>
                           <li className="hover:text-white transition-[color] duration-400 ease-in-out cursor-pointer">
-                            Best Sellers
+                            <a href="/">Best Sellers</a>
                           </li>
                           <li className="hover:text-white transition-[color] duration-400 ease-in-out cursor-pointer">
-                            Digital Gift Cards
+                            <a href="/">Digital Gift Cards</a>
                           </li>
                         </ul>
                       </div>
@@ -90,13 +94,22 @@ const NavigationSidebar = () => {
                       <div className="pb-[18px]">
                         <ul className="mt-4 mb-1 ml-2 pl-[25px] pr-5 border-l border-gray-600 flex flex-col gap-[18px]">
                           <li className="hover:text-white transition-[color] duration-400 ease-in-out cursor-pointer">
-                            New Arrival
+                            <a href="/">Outwear</a>
                           </li>
                           <li className="hover:text-white transition-[color] duration-400 ease-in-out cursor-pointer">
-                            Best Sellers
+                            <a href="/">Tees</a>
                           </li>
                           <li className="hover:text-white transition-[color] duration-400 ease-in-out cursor-pointer">
-                            Digital Gift Cards
+                            <a href="/">Polo Shirts</a>
+                          </li>
+                          <li className="hover:text-white transition-[color] duration-400 ease-in-out cursor-pointer">
+                            <a href="/">Shirts/Overshirts</a>
+                          </li>
+                          <li className="hover:text-white transition-[color] duration-400 ease-in-out cursor-pointer">
+                            <a href="/">Bottoms</a>
+                          </li>
+                          <li className="hover:text-white transition-[color] duration-400 ease-in-out cursor-pointer">
+                            <a href="/">Underwear</a>
                           </li>
                         </ul>
                       </div>
@@ -108,13 +121,22 @@ const NavigationSidebar = () => {
                       <div className="pb-[18px]">
                         <ul className="mt-4 mb-1 ml-2 pl-[25px] pr-5 border-l border-gray-600 flex flex-col gap-[18px]">
                           <li className="hover:text-white transition-[color] duration-400 ease-in-out cursor-pointer">
-                            New Arrival
+                            <a href="/">Outwear</a>
                           </li>
                           <li className="hover:text-white transition-[color] duration-400 ease-in-out cursor-pointer">
-                            Best Sellers
+                            <a href="/">Top</a>
                           </li>
                           <li className="hover:text-white transition-[color] duration-400 ease-in-out cursor-pointer">
-                            Digital Gift Cards
+                            <a href="/">Shirts</a>
+                          </li>
+                          <li className="hover:text-white transition-[color] duration-400 ease-in-out cursor-pointer">
+                            <a href="/">Bottoms</a>
+                          </li>
+                          <li className="hover:text-white transition-[color] duration-400 ease-in-out cursor-pointer">
+                            <a href="/">Dresses</a>
+                          </li>
+                          <li className="hover:text-white transition-[color] duration-400 ease-in-out cursor-pointer">
+                            <a href="/">Co-ords</a>
                           </li>
                         </ul>
                       </div>
@@ -126,31 +148,16 @@ const NavigationSidebar = () => {
                       <div className="pb-[18px]">
                         <ul className="mt-4 mb-1 ml-2 pl-[25px] pr-5 border-l border-gray-600 flex flex-col gap-[18px]">
                           <li className="hover:text-white transition-[color] duration-400 ease-in-out cursor-pointer">
-                            New Arrival
+                            <a href="/">Jewelry</a>
                           </li>
                           <li className="hover:text-white transition-[color] duration-400 ease-in-out cursor-pointer">
-                            Best Sellers
+                            <a href="/">Belts</a>
                           </li>
                           <li className="hover:text-white transition-[color] duration-400 ease-in-out cursor-pointer">
-                            Digital Gift Cards
-                          </li>
-                        </ul>
-                      </div>
-                    </AccordionContent>
-                  </AccordionItem>
-                  <AccordionItem value="item-1-5">
-                    <AccordionTrigger>For him</AccordionTrigger>
-                    <AccordionContent>
-                      <div className="pb-[18px]">
-                        <ul className="mt-4 mb-1 ml-2 pl-[25px] pr-5 border-l border-gray-600 flex flex-col gap-[18px]">
-                          <li className="hover:text-white transition-[color] duration-400 ease-in-out cursor-pointer">
-                            New Arrival
+                            <a href="/">Watches</a>
                           </li>
                           <li className="hover:text-white transition-[color] duration-400 ease-in-out cursor-pointer">
-                            Best Sellers
-                          </li>
-                          <li className="hover:text-white transition-[color] duration-400 ease-in-out cursor-pointer">
-                            Digital Gift Cards
+                            <a href="/">Masks</a>
                           </li>
                         </ul>
                       </div>
@@ -164,92 +171,93 @@ const NavigationSidebar = () => {
                 Bags
               </AccordionTrigger>
               <AccordionContent className="ml-4">
-                <Accordion type="single">
-                  <AccordionItem value="item-1-1">
+                <Accordion
+                  type="single"
+                  collapsible
+                  value={`item-${collapsed}-${nestedCollapsed}`}
+                  onValueChange={(value) => {
+                    handleNestedAccordionCollapse(value);
+                  }}
+                >
+                  <AccordionItem value="item-2-1">
                     <AccordionTrigger>Finest Essentials</AccordionTrigger>
                     <AccordionContent>
                       <div className="pb-[18px]">
                         <ul className="mt-4 mb-1 ml-2 pl-[25px] pr-5 border-l border-gray-600 flex flex-col gap-[18px]">
                           <li className="hover:text-white transition-[color] duration-400 ease-in-out cursor-pointer">
-                            New Arrival
+                            <a href="/">NEW! DryTech Series</a>
                           </li>
                           <li className="hover:text-white transition-[color] duration-400 ease-in-out cursor-pointer">
-                            Best Sellers
+                            <a href="/">New Arrival</a>
                           </li>
                           <li className="hover:text-white transition-[color] duration-400 ease-in-out cursor-pointer">
-                            Digital Gift Cards
+                            <a href="/">Best Sellers</a>
+                          </li>
+                          <li className="hover:text-white transition-[color] duration-400 ease-in-out cursor-pointer">
+                            <a href="/">Pet Accessories</a>
+                          </li>
+                          <li className="hover:text-white transition-[color] duration-400 ease-in-out cursor-pointer">
+                            <a href="/">The Everyday</a>
+                          </li>
+                          <li className="hover:text-white transition-[color] duration-400 ease-in-out cursor-pointer">
+                            <a href="/">Refined Classics</a>
+                          </li>
+                          <li className="hover:text-white transition-[color] duration-400 ease-in-out cursor-pointer">
+                            <a href="/">The Statement</a>
+                          </li>
+                          <li className="hover:text-white transition-[color] duration-400 ease-in-out cursor-pointer">
+                            <a href="/">Digital Gift Cards</a>
                           </li>
                         </ul>
                       </div>
                     </AccordionContent>
                   </AccordionItem>
-                  <AccordionItem value="item-1-2">
-                    <AccordionTrigger>For him</AccordionTrigger>
+                  <AccordionItem value="item-2-2">
+                    <AccordionTrigger>Bags</AccordionTrigger>
                     <AccordionContent>
                       <div className="pb-[18px]">
                         <ul className="mt-4 mb-1 ml-2 pl-[25px] pr-5 border-l border-gray-600 flex flex-col gap-[18px]">
                           <li className="hover:text-white transition-[color] duration-400 ease-in-out cursor-pointer">
-                            New Arrival
+                            <a href="/">Tote Bags</a>
                           </li>
                           <li className="hover:text-white transition-[color] duration-400 ease-in-out cursor-pointer">
-                            Best Sellers
+                            <a href="/">Sling & Crossbody Bags</a>
                           </li>
                           <li className="hover:text-white transition-[color] duration-400 ease-in-out cursor-pointer">
-                            Digital Gift Cards
+                            <a href="/">Bagpacks</a>
+                          </li>
+                          <li className="hover:text-white transition-[color] duration-400 ease-in-out cursor-pointer">
+                            <a href="/">Duffle Bags</a>
                           </li>
                         </ul>
                       </div>
                     </AccordionContent>
                   </AccordionItem>
-                  <AccordionItem value="item-1-3">
-                    <AccordionTrigger>For her</AccordionTrigger>
-                    <AccordionContent>
-                      <div className="pb-[18px]">
-                        <ul className="mt-4 mb-1 ml-2 pl-[25px] pr-5 border-l border-gray-600 flex flex-col gap-[18px]">
-                          <li className="hover:text-white transition-[color] duration-400 ease-in-out cursor-pointer">
-                            New Arrival
-                          </li>
-                          <li className="hover:text-white transition-[color] duration-400 ease-in-out cursor-pointer">
-                            Best Sellers
-                          </li>
-                          <li className="hover:text-white transition-[color] duration-400 ease-in-out cursor-pointer">
-                            Digital Gift Cards
-                          </li>
-                        </ul>
-                      </div>
-                    </AccordionContent>
-                  </AccordionItem>
-                  <AccordionItem value="item-1-4">
+                  <AccordionItem value="item-2-3">
                     <AccordionTrigger>Accessories</AccordionTrigger>
                     <AccordionContent>
                       <div className="pb-[18px]">
                         <ul className="mt-4 mb-1 ml-2 pl-[25px] pr-5 border-l border-gray-600 flex flex-col gap-[18px]">
                           <li className="hover:text-white transition-[color] duration-400 ease-in-out cursor-pointer">
-                            New Arrival
+                            <a href="/">Laptop Sleeves</a>
                           </li>
                           <li className="hover:text-white transition-[color] duration-400 ease-in-out cursor-pointer">
-                            Best Sellers
-                          </li>
-                          <li className="hover:text-white transition-[color] duration-400 ease-in-out cursor-pointer">
-                            Digital Gift Cards
+                            <a href="/">Wallets</a>
                           </li>
                         </ul>
                       </div>
                     </AccordionContent>
                   </AccordionItem>
-                  <AccordionItem value="item-1-5">
-                    <AccordionTrigger>For him</AccordionTrigger>
+                  <AccordionItem value="item-2-4">
+                    <AccordionTrigger>BUY 1 Gift 1 free</AccordionTrigger>
                     <AccordionContent>
                       <div className="pb-[18px]">
                         <ul className="mt-4 mb-1 ml-2 pl-[25px] pr-5 border-l border-gray-600 flex flex-col gap-[18px]">
                           <li className="hover:text-white transition-[color] duration-400 ease-in-out cursor-pointer">
-                            New Arrival
+                            <a href="/">Everything at 999</a>
                           </li>
                           <li className="hover:text-white transition-[color] duration-400 ease-in-out cursor-pointer">
-                            Best Sellers
-                          </li>
-                          <li className="hover:text-white transition-[color] duration-400 ease-in-out cursor-pointer">
-                            Digital Gift Cards
+                            <a href="/">Everything at 1500</a>
                           </li>
                         </ul>
                       </div>
@@ -263,92 +271,48 @@ const NavigationSidebar = () => {
                 Footware
               </AccordionTrigger>
               <AccordionContent className="ml-4">
-                <Accordion type="single">
-                  <AccordionItem value="item-1-1">
+                <Accordion
+                  type="single"
+                  collapsible
+                  value={`item-${collapsed}-${nestedCollapsed}`}
+                  onValueChange={(value) => {
+                    handleNestedAccordionCollapse(value);
+                  }}
+                >
+                  <AccordionItem value="item-3-1">
                     <AccordionTrigger>Finest Essentials</AccordionTrigger>
                     <AccordionContent>
                       <div className="pb-[18px]">
                         <ul className="mt-4 mb-1 ml-2 pl-[25px] pr-5 border-l border-gray-600 flex flex-col gap-[18px]">
                           <li className="hover:text-white transition-[color] duration-400 ease-in-out cursor-pointer">
-                            New Arrival
-                          </li>
-                          <li className="hover:text-white transition-[color] duration-400 ease-in-out cursor-pointer">
-                            Best Sellers
-                          </li>
-                          <li className="hover:text-white transition-[color] duration-400 ease-in-out cursor-pointer">
-                            Digital Gift Cards
+                            <a href="/">New Arrivals</a>
                           </li>
                         </ul>
                       </div>
                     </AccordionContent>
                   </AccordionItem>
-                  <AccordionItem value="item-1-2">
+                  <AccordionItem value="item-3-2">
                     <AccordionTrigger>For him</AccordionTrigger>
                     <AccordionContent>
                       <div className="pb-[18px]">
                         <ul className="mt-4 mb-1 ml-2 pl-[25px] pr-5 border-l border-gray-600 flex flex-col gap-[18px]">
                           <li className="hover:text-white transition-[color] duration-400 ease-in-out cursor-pointer">
-                            New Arrival
+                            <a href="/">Sneakers</a>
                           </li>
                           <li className="hover:text-white transition-[color] duration-400 ease-in-out cursor-pointer">
-                            Best Sellers
-                          </li>
-                          <li className="hover:text-white transition-[color] duration-400 ease-in-out cursor-pointer">
-                            Digital Gift Cards
+                            <a href="/">Sandals</a>
                           </li>
                         </ul>
                       </div>
                     </AccordionContent>
                   </AccordionItem>
-                  <AccordionItem value="item-1-3">
+                  <AccordionItem value="item-3-3">
                     <AccordionTrigger>For her</AccordionTrigger>
                     <AccordionContent>
                       <div className="pb-[18px]">
                         <ul className="mt-4 mb-1 ml-2 pl-[25px] pr-5 border-l border-gray-600 flex flex-col gap-[18px]">
                           <li className="hover:text-white transition-[color] duration-400 ease-in-out cursor-pointer">
-                            New Arrival
-                          </li>
-                          <li className="hover:text-white transition-[color] duration-400 ease-in-out cursor-pointer">
-                            Best Sellers
-                          </li>
-                          <li className="hover:text-white transition-[color] duration-400 ease-in-out cursor-pointer">
-                            Digital Gift Cards
-                          </li>
-                        </ul>
-                      </div>
-                    </AccordionContent>
-                  </AccordionItem>
-                  <AccordionItem value="item-1-4">
-                    <AccordionTrigger>Accessories</AccordionTrigger>
-                    <AccordionContent>
-                      <div className="pb-[18px]">
-                        <ul className="mt-4 mb-1 ml-2 pl-[25px] pr-5 border-l border-gray-600 flex flex-col gap-[18px]">
-                          <li className="hover:text-white transition-[color] duration-400 ease-in-out cursor-pointer">
-                            New Arrival
-                          </li>
-                          <li className="hover:text-white transition-[color] duration-400 ease-in-out cursor-pointer">
-                            Best Sellers
-                          </li>
-                          <li className="hover:text-white transition-[color] duration-400 ease-in-out cursor-pointer">
-                            Digital Gift Cards
-                          </li>
-                        </ul>
-                      </div>
-                    </AccordionContent>
-                  </AccordionItem>
-                  <AccordionItem value="item-1-5">
-                    <AccordionTrigger>For him</AccordionTrigger>
-                    <AccordionContent>
-                      <div className="pb-[18px]">
-                        <ul className="mt-4 mb-1 ml-2 pl-[25px] pr-5 border-l border-gray-600 flex flex-col gap-[18px]">
-                          <li className="hover:text-white transition-[color] duration-400 ease-in-out cursor-pointer">
-                            New Arrival
-                          </li>
-                          <li className="hover:text-white transition-[color] duration-400 ease-in-out cursor-pointer">
-                            Best Sellers
-                          </li>
-                          <li className="hover:text-white transition-[color] duration-400 ease-in-out cursor-pointer">
-                            Digital Gift Cards
+                            <a href="/">Sneakers</a>
                           </li>
                         </ul>
                       </div>
@@ -365,131 +329,40 @@ const NavigationSidebar = () => {
                 Comming soon
               </Link>
             </AccordionItem>
-            <AccordionItem value="item-5" className="border-b border-gray-600 ">
-              <AccordionTrigger className="py-6 text-white">
+            <AccordionItem value="item-5" className="border-b border-gray-600">
+              <Link
+                to="/"
+                className="relative no-underline text-white uppercase flex flex-1 items-center justify-between  transition-[color] text-[11px] duration-200 ease-in-out tracking-[0.2em] py-6"
+              >
                 Sale
-              </AccordionTrigger>
-              <AccordionContent className="ml-4">
-                <Accordion type="single">
-                  <AccordionItem value="item-1-1">
-                    <AccordionTrigger>Finest Essentials</AccordionTrigger>
-                    <AccordionContent>
-                      <div className="pb-[18px]">
-                        <ul className="mt-4 mb-1 ml-2 pl-[25px] pr-5 border-l border-gray-600 flex flex-col gap-[18px]">
-                          <li className="hover:text-white transition-[color] duration-400 ease-in-out cursor-pointer">
-                            New Arrival
-                          </li>
-                          <li className="hover:text-white transition-[color] duration-400 ease-in-out cursor-pointer">
-                            Best Sellers
-                          </li>
-                          <li className="hover:text-white transition-[color] duration-400 ease-in-out cursor-pointer">
-                            Digital Gift Cards
-                          </li>
-                        </ul>
-                      </div>
-                    </AccordionContent>
-                  </AccordionItem>
-                  <AccordionItem value="item-1-2">
-                    <AccordionTrigger>For him</AccordionTrigger>
-                    <AccordionContent>
-                      <div className="pb-[18px]">
-                        <ul className="mt-4 mb-1 ml-2 pl-[25px] pr-5 border-l border-gray-600 flex flex-col gap-[18px]">
-                          <li className="hover:text-white transition-[color] duration-400 ease-in-out cursor-pointer">
-                            New Arrival
-                          </li>
-                          <li className="hover:text-white transition-[color] duration-400 ease-in-out cursor-pointer">
-                            Best Sellers
-                          </li>
-                          <li className="hover:text-white transition-[color] duration-400 ease-in-out cursor-pointer">
-                            Digital Gift Cards
-                          </li>
-                        </ul>
-                      </div>
-                    </AccordionContent>
-                  </AccordionItem>
-                  <AccordionItem value="item-1-3">
-                    <AccordionTrigger>For her</AccordionTrigger>
-                    <AccordionContent>
-                      <div className="pb-[18px]">
-                        <ul className="mt-4 mb-1 ml-2 pl-[25px] pr-5 border-l border-gray-600 flex flex-col gap-[18px]">
-                          <li className="hover:text-white transition-[color] duration-400 ease-in-out cursor-pointer">
-                            New Arrival
-                          </li>
-                          <li className="hover:text-white transition-[color] duration-400 ease-in-out cursor-pointer">
-                            Best Sellers
-                          </li>
-                          <li className="hover:text-white transition-[color] duration-400 ease-in-out cursor-pointer">
-                            Digital Gift Cards
-                          </li>
-                        </ul>
-                      </div>
-                    </AccordionContent>
-                  </AccordionItem>
-                  <AccordionItem value="item-1-4">
-                    <AccordionTrigger>Accessories</AccordionTrigger>
-                    <AccordionContent>
-                      <div className="pb-[18px]">
-                        <ul className="mt-4 mb-1 ml-2 pl-[25px] pr-5 border-l border-gray-600 flex flex-col gap-[18px]">
-                          <li className="hover:text-white transition-[color] duration-400 ease-in-out cursor-pointer">
-                            New Arrival
-                          </li>
-                          <li className="hover:text-white transition-[color] duration-400 ease-in-out cursor-pointer">
-                            Best Sellers
-                          </li>
-                          <li className="hover:text-white transition-[color] duration-400 ease-in-out cursor-pointer">
-                            Digital Gift Cards
-                          </li>
-                        </ul>
-                      </div>
-                    </AccordionContent>
-                  </AccordionItem>
-                  <AccordionItem value="item-1-5">
-                    <AccordionTrigger>For him</AccordionTrigger>
-                    <AccordionContent>
-                      <div className="pb-[18px]">
-                        <ul className="mt-4 mb-1 ml-2 pl-[25px] pr-5 border-l border-gray-600 flex flex-col gap-[18px]">
-                          <li className="hover:text-white transition-[color] duration-400 ease-in-out cursor-pointer">
-                            New Arrival
-                          </li>
-                          <li className="hover:text-white transition-[color] duration-400 ease-in-out cursor-pointer">
-                            Best Sellers
-                          </li>
-                          <li className="hover:text-white transition-[color] duration-400 ease-in-out cursor-pointer">
-                            Digital Gift Cards
-                          </li>
-                        </ul>
-                      </div>
-                    </AccordionContent>
-                  </AccordionItem>
-                </Accordion>
-              </AccordionContent>
+              </Link>
             </AccordionItem>
           </Accordion>
         </nav>
         <nav className="mt-9">
           <ul className="flex flex-col gap-6 text-gray-650">
-            <li className="transition-colors duration-200 ease-in-out hover:text-white ">
+            <li className="transition-colors duration-200 ease-in-out hover:text-white">
               <a href="/">About</a>
             </li>
-            <li>
+            <li className="transition-colors duration-200 ease-in-out hover:text-white">
               <a href="/">Careers</a>
             </li>
-            <li>
+            <li className="transition-colors duration-200 ease-in-out hover:text-white">
               <a href="/">Physical Stores</a>
             </li>
-            <li>
+            <li className="transition-colors duration-200 ease-in-out hover:text-white">
               <a href="/">Submit Proof of Payment</a>
             </li>
-            <li>
+            <li className="transition-colors duration-200 ease-in-out hover:text-white">
               <a href="/">Order Request Form</a>
             </li>
-            <li>
+            <li className="transition-colors duration-200 ease-in-out hover:text-white">
               <a href="/">FAQs + Contact</a>
             </li>
-            <li>
+            <li className="transition-colors duration-200 ease-in-out hover:text-white">
               <a href="/">Account</a>
             </li>
-            <li>
+            <li className="transition-colors duration-200 ease-in-out hover:text-white">
               <a href="/">Search</a>
             </li>
           </ul>
