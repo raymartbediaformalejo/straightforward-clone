@@ -14,16 +14,36 @@ import {
 } from "../ui/select";
 import { Facebook, Instagram } from "lucide-react";
 import { useState } from "react";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "../ui/tooltip";
 
 const NavigationSidebar = () => {
-  const [collapsed, setCollapsed] = useState("2");
+  const [collapsed, setCollapsed] = useState("");
+  const [nestedCollapsed, setNestedCollapsed] = useState("");
   const handleAccordionCollapsed = (value: string) => {
     const index = value.indexOf("-");
     setCollapsed(value.charAt(index + 1));
   };
+
+  console.log("nestedCollapsed: ", nestedCollapsed);
+
+  const handleNestedAccordionCollapse = (value: string) => {
+    const item = value.match(/[^-]+$/);
+    if (item !== null) {
+      const characters = item[0];
+      setNestedCollapsed(characters);
+    } else {
+      setNestedCollapsed("");
+    }
+    console.log(value);
+  };
   return (
     <div className="flex flex-col h-full">
-      <div className="pl-[18px] pr-6 mt-20 grow overflow-y-auto">
+      <div className="pl-5 pr-6 mt-20 overflow-y-auto grow">
         <nav>
           <Accordion
             type="single"
@@ -34,11 +54,18 @@ const NavigationSidebar = () => {
             }}
           >
             <AccordionItem value="item-1" className="border-b border-gray-600 ">
-              <AccordionTrigger className="py-5 text-white">
+              <AccordionTrigger className="py-6 text-white">
                 Apparel
               </AccordionTrigger>
               <AccordionContent className="ml-4">
-                <Accordion type="single">
+                <Accordion
+                  type="single"
+                  collapsible
+                  value={`item-${collapsed}-${nestedCollapsed}`}
+                  onValueChange={(value) => {
+                    handleNestedAccordionCollapse(value);
+                  }}
+                >
                   <AccordionItem value="item-1-1">
                     <AccordionTrigger>Finest Essentials</AccordionTrigger>
                     <AccordionContent>
@@ -133,7 +160,7 @@ const NavigationSidebar = () => {
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="item-2" className="border-b border-gray-600 ">
-              <AccordionTrigger className="py-5 text-white">
+              <AccordionTrigger className="py-6 text-white">
                 Bags
               </AccordionTrigger>
               <AccordionContent className="ml-4">
@@ -232,7 +259,7 @@ const NavigationSidebar = () => {
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="item-3" className="border-b border-gray-600 ">
-              <AccordionTrigger className="py-5 text-white">
+              <AccordionTrigger className="py-6 text-white">
                 Footware
               </AccordionTrigger>
               <AccordionContent className="ml-4">
@@ -333,13 +360,13 @@ const NavigationSidebar = () => {
             <AccordionItem value="item-4" className="border-b border-gray-600">
               <Link
                 to="/"
-                className="relative no-underline text-white uppercase flex flex-1 items-center justify-between  transition-[color] text-[11px] duration-200 ease-in-out tracking-[0.2em] py-5"
+                className="relative no-underline text-white uppercase flex flex-1 items-center justify-between  transition-[color] text-[11px] duration-200 ease-in-out tracking-[0.2em] py-6"
               >
                 Comming soon
               </Link>
             </AccordionItem>
             <AccordionItem value="item-5" className="border-b border-gray-600 ">
-              <AccordionTrigger className="py-5 text-white">
+              <AccordionTrigger className="py-6 text-white">
                 Sale
               </AccordionTrigger>
               <AccordionContent className="ml-4">
@@ -439,8 +466,8 @@ const NavigationSidebar = () => {
             </AccordionItem>
           </Accordion>
         </nav>
-        <nav className="mt-8">
-          <ul className="flex flex-col text-gray-650 gap-[18px]">
+        <nav className="mt-9">
+          <ul className="flex flex-col gap-6 text-gray-650">
             <li className="transition-colors duration-200 ease-in-out hover:text-white ">
               <a href="/">About</a>
             </li>
@@ -468,10 +495,10 @@ const NavigationSidebar = () => {
           </ul>
         </nav>
       </div>
-      <aside>
-        <div>
+      <aside className="flex border-t border-gray-600">
+        <div className="grid items-center border-r border-gray-600 grow">
           <Select defaultValue="PH">
-            <SelectTrigger className="w-[180px]">
+            <SelectTrigger className="pl-5 bg-transparent w-[120px] border-none text-gray-650 ring-0 ring-offset-0 focus:ring-0 focus:ring-offset-0">
               <SelectValue placeholder="Currency" />
             </SelectTrigger>
             <SelectContent>
@@ -480,16 +507,42 @@ const NavigationSidebar = () => {
             </SelectContent>
           </Select>
         </div>
-        <ul>
-          <li>
-            <a href="">
-              <Facebook className="text-gray-650" />
-            </a>
+        <ul className="flex items-center w-full justify-evenly">
+          <li className="my-4">
+            <TooltipProvider>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <a href="">
+                    <Facebook
+                      className="transition-colors duration-200 ease-in-out text-gray-650 hover:text-white"
+                      width="1.2em"
+                      height="1.2em"
+                    />
+                  </a>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p>Facebook</p>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
           </li>
-          <li>
-            <a href="">
-              <Instagram className="text-gray-650" />
-            </a>
+          <li className="my-4">
+            <TooltipProvider>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <a href="">
+                    <Instagram
+                      className="transition-colors duration-200 ease-in-out text-gray-650 hover:text-white"
+                      width="1.2em"
+                      height="1.2em"
+                    />
+                  </a>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p>Instagram</p>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
           </li>
         </ul>
       </aside>
