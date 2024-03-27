@@ -23,7 +23,7 @@ const MobileToggle = ({
           )}
         />
       </SheetTrigger>
-      <SheetContent side="left" className="p-0 border-none bg-primary">
+      <SheetContent theme="dark" side="left">
         <NavigationSidebar />
       </SheetContent>
     </Sheet>

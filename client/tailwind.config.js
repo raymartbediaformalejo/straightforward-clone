@@ -70,10 +70,23 @@ module.exports = {
         400: "400ms",
         450: "450ms",
       },
+      transitionTimingFunction: {
+        "in-expo": "cubic-bezier(0.785, 0.135, 0.15, 0.86)",
+        "in-card": "cubic-bezier(0.645, 0.045, 0.355, 1)",
+      },
+      height: {
+        "header-height": "59px",
+      },
+      width: {
+        "sheet-width": "calc(100vw - 65px)",
+      },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
+      },
+      boxShadow: {
+        divider: "0 -1px #d0d0d0 inset",
       },
       keyframes: {
         "accordion-down": {

@@ -10,9 +10,9 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          "relative uppercase z-1 text-white bg-transparent border border-primary transition-[color,border] duration-450 ease-[cubic-bezier(.785,.135,.15,.86)] before:bg-primary  before:absolute before:left-0 before:right-0 before:top-0 before:bottom-0 before:w-full before:h-full before:scale-100 before:origin-left before:z-[1] before:transition-transform before:duration-450 before:ease-[cubic-bezier(.785,.135,.15,.86)] hover:text-primary hover:before:scale-x-0 hover:before:origin-right hover:before:h-full",
+          "relative uppercase z-1 text-white bg-transparent border border-primary transition-[color,border] duration-450 ease-in-expo before:bg-primary  before:absolute before:left-0 before:right-0 before:top-0 before:bottom-0 before:w-full before:h-full before:scale-100 before:origin-left before:z-[1] before:transition-transform before:duration-450 before:ease-in-expo hover:text-primary hover:before:scale-x-0 hover:before:origin-right hover:before:h-full",
         secondary:
-          "relative uppercase z-1 text-[#363636] bg-transparent border border-white transition-[color,border] duration-450 ease-[cubic-bezier(.785,.135,.15,.86)] before:bg-white before:absolute before:left-0 before:right-0 before:top-0 before:bottom-0 before:w-full before:h-full before:scale-100 before:origin-left before:z-[1] before:transition-transform before:duration-450 before:ease-[cubic-bezier(.785,.135,.15,.86)] hover:text-white hover:before:scale-x-0 hover:before:origin-right hover:before:h-full",
+          "relative uppercase z-1 text-[#363636] bg-transparent border border-white transition-[color,border] duration-450 ease-in-expo before:bg-white before:absolute before:left-0 before:right-0 before:top-0 before:bottom-0 before:w-full before:h-full before:scale-100 before:origin-left before:z-[1] before:transition-transform before:duration-450 before:ease-in-expo hover:text-white hover:before:scale-x-0 hover:before:origin-right hover:before:h-full",
         destructive:
           "bg-destructive text-destructive-foreground hover:bg-destructive/90",
         outline:

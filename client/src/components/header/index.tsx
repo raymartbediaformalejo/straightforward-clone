@@ -1,8 +1,8 @@
-import { ShoppingCart } from "lucide-react";
 import Logo from "../svg/Logo";
 import { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
-import MobileToggle from "../mobile-toggle";
+import MobileToggle from "@/components/mobile-toggle";
+import CartToggle from "@/components/cart/cart-toggle";
 
 const Header = () => {
   const headerRef = useRef<HTMLElement>(null);
@@ -57,15 +57,10 @@ const Header = () => {
               isScrolling || isPointerInHeader ? "fill-primary" : "fill-white"
             )}
           />
-          <button>
-            <ShoppingCart
-              size="24px"
-              className={cn(
-                "transition-[color] duration-300 ease-in-out",
-                isScrolling || isPointerInHeader ? "text-primary" : "text-white"
-              )}
-            />
-          </button>
+          <CartToggle
+            isScrolling={isScrolling}
+            isPointerInHeader={isPointerInHeader}
+          />
         </div>
       </header>
     </div>
