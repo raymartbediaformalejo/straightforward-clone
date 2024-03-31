@@ -20,6 +20,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "../ui/tooltip";
+import { ScrollArea } from "../ui/scroll-area";
 
 const NavigationSidebar = () => {
   const [collapsed, setCollapsed] = useState("");
@@ -45,7 +46,7 @@ const NavigationSidebar = () => {
   };
   return (
     <div className="flex flex-col h-full">
-      <div className="pl-5 pr-6 mt-20 overflow-y-auto grow">
+      <ScrollArea className="pl-5 pr-6 mt-20 max-h-dvh grow" theme="dark">
         <nav>
           <Accordion
             type="single"
@@ -365,7 +366,7 @@ const NavigationSidebar = () => {
             </li>
           </ul>
         </nav>
-      </div>
+      </ScrollArea>
       <aside className="flex border-t border-gray-600">
         <div className="grid items-center border-r border-gray-600 grow">
           <Select defaultValue="PH">

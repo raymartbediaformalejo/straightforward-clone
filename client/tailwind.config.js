@@ -76,6 +76,7 @@ module.exports = {
       },
       height: {
         "header-height": "59px",
+        "100%-header-height": "calc(100% - 59px)",
       },
       width: {
         "sheet-width": "calc(100vw - 65px)",
@@ -86,7 +87,8 @@ module.exports = {
         sm: "calc(var(--radius) - 4px)",
       },
       boxShadow: {
-        divider: "0 -1px #d0d0d0 inset",
+        "divider-bottom": "0 -1px #d0d0d0 inset",
+        "divider-top": "0 -1px #d0d0d0",
       },
       keyframes: {
         "accordion-down": {
