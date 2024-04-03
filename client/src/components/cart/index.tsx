@@ -12,7 +12,7 @@ const Cart = () => {
       <div className="flex flex-col h-100%-header-height">
         <ScrollArea
           theme="light"
-          className="flex flex-col flex-auto overflow-auto max-h-dvh"
+          className="flex flex-col flex-auto px-6 overflow-auto max-h-dvh"
         >
           <CartItem
             name="Kazuno Tee"
@@ -25,42 +25,6 @@ const Cart = () => {
             variant="WK Sweet Pea / XS"
             basePrice={1200}
             imageUrl="https://www.shopstraightforward.com/cdn/shop/files/Kazuno-SWEET-PEA-Front_240x.png?v=1708411205"
-          />
-          <CartItem
-            name="Kazuno Tee"
-            variant="WK Cream / XL"
-            basePrice={1200}
-            imageUrl="https://www.shopstraightforward.com/cdn/shop/files/Kazuno-CREAM-front_240x.png?v=1708393385"
-          />
-          <CartItem
-            name="Kazuno Tee"
-            variant="WK Cream / XL"
-            basePrice={1200}
-            imageUrl="https://www.shopstraightforward.com/cdn/shop/files/Kazuno-CREAM-front_240x.png?v=1708393385"
-          />
-          <CartItem
-            name="Kazuno Tee"
-            variant="WK Cream / XL"
-            basePrice={1200}
-            imageUrl="https://www.shopstraightforward.com/cdn/shop/files/Kazuno-CREAM-front_240x.png?v=1708393385"
-          />
-          <CartItem
-            name="Kazuno Tee"
-            variant="WK Cream / XL"
-            basePrice={1200}
-            imageUrl="https://www.shopstraightforward.com/cdn/shop/files/Kazuno-CREAM-front_240x.png?v=1708393385"
-          />
-          <CartItem
-            name="Kazuno Tee"
-            variant="WK Cream / XL"
-            basePrice={1200}
-            imageUrl="https://www.shopstraightforward.com/cdn/shop/files/Kazuno-CREAM-front_240x.png?v=1708393385"
-          />
-          <CartItem
-            name="Kazuno Tee"
-            variant="WK Cream / XL"
-            basePrice={1200}
-            imageUrl="https://www.shopstraightforward.com/cdn/shop/files/Kazuno-CREAM-front_240x.png?v=1708393385"
           />
           <CartItem
             name="Kazuno Tee"

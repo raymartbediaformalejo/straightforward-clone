@@ -65,6 +65,9 @@ module.exports = {
           foreground: "hsl(var(--card-foreground))",
         },
       },
+      letterSpacing: {
+        widest: "0.2em",
+      },
       transitionDuration: {
         350: "350ms",
         400: "400ms",
@@ -73,6 +76,9 @@ module.exports = {
       transitionTimingFunction: {
         "in-expo": "cubic-bezier(0.785, 0.135, 0.15, 0.86)",
         "in-card": "cubic-bezier(0.645, 0.045, 0.355, 1)",
+      },
+      transformOrigin: {
+        "left-center": "left center",
       },
       height: {
         "header-height": "59px",
