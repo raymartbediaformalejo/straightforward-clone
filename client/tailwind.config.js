@@ -68,14 +68,22 @@ module.exports = {
       letterSpacing: {
         widest: "0.2em",
       },
+      objectPosition: {
+        "center-center": "cneter center",
+      },
+      backgroundPosition: {
+        "center-center": "50% 50%",
+      },
       transitionDuration: {
         350: "350ms",
         400: "400ms",
         450: "450ms",
+        8000: "8000ms",
       },
       transitionTimingFunction: {
         "in-expo": "cubic-bezier(0.785, 0.135, 0.15, 0.86)",
         "in-card": "cubic-bezier(0.645, 0.045, 0.355, 1)",
+        "zoom-in-bg": "cubic-bezier(0.25, 0.46, 0.45, 0.94)",
       },
       transformOrigin: {
         "left-center": "left center",
