@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import {
   Carousel,
   CarouselContent,
+  CarouselDots,
   CarouselItem,
 } from "@/components/ui/carousel";
 
@@ -117,6 +118,7 @@ const Collection = () => {
             </div>
           </CarouselItem>
         </CarouselContent>
+        <CarouselDots />
       </Carousel>
     </div>
   );
