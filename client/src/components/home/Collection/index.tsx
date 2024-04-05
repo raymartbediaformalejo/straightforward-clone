@@ -9,7 +9,7 @@ import {
 const Collection = () => {
   return (
     <div>
-      <Carousel opts={{ loop: true }}>
+      <Carousel className="relative" opts={{ loop: true }}>
         <CarouselContent>
           <CarouselItem>
             <div
@@ -118,7 +118,7 @@ const Collection = () => {
             </div>
           </CarouselItem>
         </CarouselContent>
-        <CarouselDots />
+        <CarouselDots className="absolute left-6 bottom-8" />
       </Carousel>
     </div>
   );
