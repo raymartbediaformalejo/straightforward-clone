@@ -134,9 +134,9 @@ const Collection = () => {
         </CarouselContent>
         <CarouselDots className="absolute left-6 bottom-8" />
       </Carousel>
-      <div className="h-[179.906px]">
+      <div className="overflow-hidden h-[179.906px]">
         <img
-          className="w-full h-full"
+          className="w-full"
           src="//www.shopstraightforward.com/cdn/shop/files/432739363_408693131807411_8587999582659222486_n_x800.png?v=1711501846"
           alt=""
         />

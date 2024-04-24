@@ -29,9 +29,6 @@ type CarouselContextProps = {
   slideGapsInPixel?: string;
 } & CarouselProps;
 
-// type CarouselItemProps = {
-//   slideGapsInPixel?: string;
-// };
 type CarouselContentProps = {
   slideGapsInPixel?: string;
 };
@@ -163,6 +160,9 @@ const CarouselContent = React.forwardRef<
   React.HTMLAttributes<HTMLDivElement> & CarouselContentProps
 >(({ className, slideGapsInPixel, ...props }, ref) => {
   const { carouselRef, orientation } = useCarousel();
+
+  console.log("carouselRef: ", carouselRef);
+  console.log("orientation: ", orientation);
 
   numberSlideGapsInPixel = slideGapsInPixel ? slideGapsInPixel : "";
 

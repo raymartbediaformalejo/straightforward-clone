@@ -1,4 +1,5 @@
 import Collection from "./Collection";
+import FeaturedCollection from "./FeaturedCollection";
 import HomeHeroSection from "./home-hero-section";
 
 const HomeContent = () => {
@@ -6,6 +7,7 @@ const HomeContent = () => {
     <>
       <HomeHeroSection />
       <Collection />
+      <FeaturedCollection />
     </>
   );
 };
