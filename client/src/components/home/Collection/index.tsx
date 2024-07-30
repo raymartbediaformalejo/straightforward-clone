@@ -134,11 +134,10 @@ const Collection = () => {
         </CarouselContent>
         <CarouselDots className="absolute left-6 bottom-8" />
       </Carousel>
-      <div className="overflow-hidden h-[179.906px]">
+      <div className="h-auto overflow-hidden">
         <img
           className="w-full"
           src="//www.shopstraightforward.com/cdn/shop/files/432739363_408693131807411_8587999582659222486_n_x800.png?v=1711501846"
-          alt=""
         />
       </div>
     </div>

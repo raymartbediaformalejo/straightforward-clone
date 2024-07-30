@@ -21,6 +21,7 @@ import {
   TooltipTrigger,
 } from "../ui/tooltip";
 import { ScrollArea } from "../ui/scroll-area";
+import { SelectSeparator } from "@radix-ui/react-select";
 
 const NavigationSidebar = () => {
   const [collapsed, setCollapsed] = useState("");
@@ -375,6 +376,7 @@ const NavigationSidebar = () => {
             </SelectTrigger>
             <SelectContent>
               <SelectItem value="PH">PH</SelectItem>
+              <SelectSeparator />
               <SelectItem value="USD">USD</SelectItem>
             </SelectContent>
           </Select>

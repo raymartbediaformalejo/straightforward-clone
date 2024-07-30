@@ -8,10 +8,10 @@ import FeaturedCollectionItem from "./featured-collection-item";
 
 const FeaturedCollection = () => {
   return (
-    <section>
-      <header>
-        <h3>Discover the latest</h3>
-        <h2>Beyond Beyond</h2>
+    <section className="flex flex-col py-8 justify-items-center">
+      <header className="mb-16 font-semibold text-center uppercase">
+        <h3 className="text-xs  tracking-[2.4px] ">Discover the latest</h3>
+        <h2 className="mt-4 text-xl tracking-[4px] ">The Female Range</h2>
       </header>
       <Carousel>
         <CarouselContent>
