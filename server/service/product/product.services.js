@@ -1,5 +1,5 @@
 // service/product/product.service.js
-const pool = require("../../db/conn.js");
+const pool = require("../../config/conn.js");
 
 class Products {
   static getProducts = async () => {
