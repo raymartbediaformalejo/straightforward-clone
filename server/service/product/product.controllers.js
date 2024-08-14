@@ -18,7 +18,7 @@ const getProduct = async (req, res) => {
     const data = await Products.getProduct(productID);
     return res.status(200).send({ data, ok: true });
   } catch (error) {
-    console.log("Error Products Controller", error);
+    console.log("Error Product Controller", error);
     return res
       .status(500)
       .send({ message: "Internal Server Error", ok: false });

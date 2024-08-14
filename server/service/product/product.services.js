@@ -8,32 +8,53 @@ class Products {
       const query = `
         SELECT 
           p.product_id "productID", 
-          p.product_name "productName", 
+          p.product_name "productName",
+          p.thumbnail,
+          p.images,
+          p.is_featured "isFeatured",
           COALESCE(json_agg(
             DISTINCT jsonb_build_object(
-              'categoryID', c.category_id, 
+              'categoryID', c.category_id,
               'categoryName', c.category_name,
-              'parentCategoryID', c.parent_categ_id
+              'categoryDesc', c.category_desc,
+              'parentCategoryID', c.parent_categ_id,
+              'imageURL', c.image_url,
+              'createdAt', c.created_at,
+              'updatedAt', c.updated_at
             )
           ) FILTER (WHERE c.category_id IS NOT NULL), '[]') as category,
           COALESCE(json_agg(
             DISTINCT jsonb_build_object(
               'variationID', v.variation_id, 
               'variationName', v.variation_name,
+              'sku', v.sku,
+              'price', v.price,
+              'discountPercentage', v.discount_percentage,
+              'stockQuantity', v.stock_quantity,
+              'productImageIndex', v.product_image_index,
+              'imageURL', v.image_url,
+              'minimumOrderQuantity', v.minimum_order_quantity,
               'size', (
                 SELECT COALESCE(json_agg(
                   DISTINCT jsonb_build_object(
                     'sizeID', s.size_id, 
                     'sizeName', s.size_name,
-                    'sizeValue', s.size_value
+                    'sizeValue', s.size_value,
+                    'additionalPrice', s.additional_price,
+                    'createdAt', s.created_at,
+                    'updatedAt', s.updated_at
                   )
                 ) FILTER (WHERE s.size_id IS NOT NULL), '[]')
                 FROM variation_size vs
                 LEFT JOIN size s ON vs.size_id = s.size_id
                 WHERE vs.variation_id = v.variation_id
-              )
+              ),
+              'createdAt', v.created_at,
+              'updatedAt', v.updated_at
             )
-          ) FILTER (WHERE v.variation_id IS NOT NULL), '[]') as variation
+          ) FILTER (WHERE v.variation_id IS NOT NULL), '[]') as variation,
+          p.created_at "createdAt",
+          p.updated_at "updatedAt" 
         FROM products p
         LEFT JOIN product_category pc ON p.product_id = pc.product_id
         LEFT JOIN category c ON pc.category_id = c.category_id
@@ -55,40 +76,61 @@ class Products {
     try {
       const query = `
       SELECT 
-        p.product_id "productID",
+        p.product_id "productID", 
         p.product_name "productName",
+        p.thumbnail,
+        p.images,
+        p.is_featured "isFeatured",
         COALESCE(json_agg(
           DISTINCT jsonb_build_object(
           'categoryID', c.category_id,
           'categoryName', c.category_name,
-          'parentCategoryID', c.parent_categ_id
+          'categoryDesc', c.category_desc,
+          'parentCategoryID', c.parent_categ_id,
+          'imageURL', c.image_url,
+          'createdAt', c.created_at,
+          'updatedAt', c.updated_at
           )
         ) FILTER (WHERE c.category_id IS NOT NULL), '[]') as category,
         COALESCE(json_agg(
           DISTINCT jsonb_build_object(
-            'variationID', v.variation_id,
+            'variationID', v.variation_id, 
             'variationName', v.variation_name,
+            'sku', v.sku,
+            'price', v.price,
+            'discountPercentage', v.discount_percentage,
+            'stockQuantity', v.stock_quantity,
+            'productImageIndex', v.product_image_index,
+            'imageURL', v.image_url,
+            'minimumOrderQuantity', v.minimum_order_quantity,
             'size', (
               SELECT COALESCE(json_agg(
                 DISTINCT jsonb_build_object(
-                  'sizeID', s.size_id,
+                  'sizeID', s.size_id, 
                   'sizeName', s.size_name,
-                  'sizeValue', s.size_value
+                  'sizeValue', s.size_value,
+                  'additionalPrice', s.additional_price,
+                  'createdAt', s.created_at,
+                  'updatedAt', s.updated_at
                 )
               ) FILTER (WHERE s.size_id IS NOT NULL), '[]')
-               FROM variation_size vs
-               LEFT JOIN size s ON vs.size_id = s.size_id
-               WHERE vs.variation_id = v.variation_id
-            )
+              FROM variation_size vs
+              LEFT JOIN size s ON vs.size_id = s.size_id
+              WHERE vs.variation_id = v.variation_id
+            ),
+            'createdAt', v.created_at,
+            'updatedAt', v.updated_at
           )
-        ) FILTER (WHERE v.variation_id IS NOT NULL), '[]') as variation
+        ) FILTER (WHERE v.variation_id IS NOT NULL), '[]') as variation,
+        p.created_at "createdAt",
+        p.updated_at "updatedAt" 
        FROM products p 
        LEFT JOIN product_category pc ON p.product_id = pc.product_id
        LEFT JOIN category c ON pc.category_id = c.category_id
        LEFT JOIN variation v ON p.product_id = v.product_id
        WHERE p.product_id = $1
-       GROUP BY p.product_id`;
-
+       GROUP BY p.product_id
+       `;
       const result = await client.query(query, [productID]);
       return result.rows;
     } catch (error) {
