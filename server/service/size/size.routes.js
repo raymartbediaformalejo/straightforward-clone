@@ -4,6 +4,6 @@ const { getSizes } = require("./size.controllers");
 
 const router = Router();
 
-router.get("/size", getSizes);
+router.get("/", getSizes);
 
 module.exports = router;

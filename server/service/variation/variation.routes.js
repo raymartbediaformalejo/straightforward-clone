@@ -4,6 +4,6 @@ const { getVariations } = require("./variation.controllers");
 
 const router = Router();
 
-router.get("/variation", getVariations);
+router.get("/", getVariations);
 
 module.exports = router;

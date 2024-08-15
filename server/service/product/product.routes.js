@@ -1,4 +1,4 @@
-const { Router } = require("express");
+const router = require("express").Router();
 const {
   getProducts,
   getProduct,
@@ -7,12 +7,13 @@ const {
   deleteProduct,
 } = require("./product.controllers.js");
 
-const router = Router();
+// router.get("/products");
 
-router.get("/products", getProducts);
-router.get("/products/:productID", getProduct);
-router.post("/products", createProduct);
-router.patch("/products/:productID", updateProduct);
-router.delete("/products/:productID", deleteProduct);
+router
+  .get("/", getProducts)
+  .get("/:productID", getProduct)
+  .post("/", createProduct)
+  .patch("/:productID", updateProduct)
+  .delete("/:productID", deleteProduct);
 
 module.exports = router;
