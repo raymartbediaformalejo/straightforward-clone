@@ -32,7 +32,8 @@ const login = async (req, res) => {
         },
       },
       process.env.ACCESS_TOKEN_SECRET,
-      { expiresIn: "35m" }
+      { expiresIn: "10s" }
+      // { expiresIn: "35m" }
     );
 
     const refreshToken = jwt.sign(
@@ -40,7 +41,8 @@ const login = async (req, res) => {
         email: foundUser.email,
       },
       process.env.REFRESH_TOKEN_SECRET,
-      { expiresIn: "7d" }
+      { expiresIn: "20s" }
+      // { expiresIn: "7d" }
     );
 
     res.cookie("jwt", refreshToken, {
@@ -61,8 +63,7 @@ const login = async (req, res) => {
 const refresh = (req, res) => {
   const cookies = req.cookies;
 
-  if (!cookies?.jwt)
-    return res.status(401).json({ message: "Unauthorized eme" });
+  if (!cookies?.jwt) return res.status(401).json({ message: "Unauthorized" });
 
   const refreshToken = cookies.jwt;
 
@@ -74,8 +75,6 @@ const refresh = (req, res) => {
       const client = await pool.connect();
 
       try {
-        console.log("eme");
-        console.log(decoded);
         const queryText = `SELECT * FROM "user" WHERE email = $1`;
         const result = await client.query(queryText, [decoded.email]);
 
@@ -94,7 +93,8 @@ const refresh = (req, res) => {
             },
           },
           process.env.ACCESS_TOKEN_SECRET,
-          { expiresIn: "35m" }
+          { expiresIn: "10s" }
+          // { expiresIn: "35m" }
         );
 
         res.json({ accessToken });
@@ -109,7 +109,8 @@ const refresh = (req, res) => {
 
 const logout = (req, res) => {
   const cookies = req.cookies;
-  if (!cookies?.jwt) return res.sendStatus(204);
+  if (!cookies?.jwt) return res.sendStatus(204); // No content if no token is present
+
   res.clearCookie("jwt", { httpOnly: true, sameSite: "None", secure: true });
   res.json({ message: "Cookie cleared" });
 };
