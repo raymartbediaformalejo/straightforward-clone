@@ -1,14 +1,14 @@
-/** @type {import('tailwindcss').Config} */
-/*eslint-env node*/
+import type { Config } from "tailwindcss"
+import defaultTheme from "tailwindcss/defaultTheme";
 
-module.exports = {
+const config = {
   darkMode: ["class"],
   content: [
-    "./pages/**/*.{ts,tsx}",
-    "./components/**/*.{ts,tsx}",
-    "./app/**/*.{ts,tsx}",
-    "./src/**/*.{ts,tsx}",
-  ],
+    './pages/**/*.{ts,tsx}',
+    './components/**/*.{ts,tsx}',
+    './app/**/*.{ts,tsx}',
+    './src/**/*.{ts,tsx}',
+	],
   prefix: "",
   theme: {
     container: {
@@ -18,8 +18,10 @@ module.exports = {
         "2xl": "1400px",
       },
     },
-
     extend: {
+      fontFamily: {
+        sans: ['"Nunito Sans"', ...defaultTheme.fontFamily.sans],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -87,9 +89,6 @@ module.exports = {
         "header-height": "59px",
         "100%-header-height": "calc(100% - 59px)",
       },
-      width: {
-        "sheet-width": "calc(100vw - 65px)",
-      },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
@@ -116,4 +115,6 @@ module.exports = {
     },
   },
   plugins: [require("tailwindcss-animate")],
-};
+} satisfies Config
+
+export default config
